@@ -43,7 +43,7 @@ pd.set_option('display.unicode.east_asian_width', True)
 start_date = '20220101'
 end_date = '20220810'
 adj = "hfq"  # 复权类型：None未复权 qfq前复权 hfq后复权
-period = "1"  # 周期可选：1, 5, 15, 30, 60 分钟的数据频率。"daily", "weekly", "monthly"
+period = "daily"  # 周期可选：1, 5, 15, 30, 60 分钟的数据频率。"daily", "weekly", "monthly"
 
 
 # 创建文件存储路径
