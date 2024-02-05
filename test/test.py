@@ -40,14 +40,14 @@ pd.set_option('display.unicode.ambiguous_as_wide', True)
 pd.set_option('display.unicode.east_asian_width', True)
 
 # 输入参数
-start_date = '20220101'
-end_date = '20220810'
+start_date = '20230101'
+end_date = '20230801'
 adj = "hfq"  # 复权类型：None未复权 qfq前复权 hfq后复权
 period = "daily"  # 周期可选：1, 5, 15, 30, 60 分钟的数据频率。"daily", "weekly", "monthly"
 
 
 # 创建文件存储路径
-def create_path():
+def create_path(ak_code):
     global path
     date_str = str(pd.to_datetime(start_date).date())  # 日期转换成字符串
     path = os.path.join(".", "all_stock_candle", "stock", date_str)
@@ -72,13 +72,15 @@ for i in range(len(code_list)):
     try:
         # 利用东财历史行情数据接口获取股票数据
         df = ak.stock_zh_a_hist(symbol=ak_code, period=period, start_date=start_date, end_date=end_date, adjust=adj)
+        print(df)
     except Exception as e:
         print(e)
 
     df['股票代码'] = ak_code
     df['股票名称'] = ak_name
     df.rename(columns={'日期': '交易日期', '开盘': '开盘价', '最高': '最高价', '最低': '最低价', '收盘': '收盘价', '成交量': '成交量'}, inplace=True)
-    df = df[['交易日期', '股票代码', '股票名称', '开盘价', '收盘价', '最高价', '最低价', '成交量', '成交额', '涨跌幅', '换手率']]
+    # df = df[['交易日期', '股票代码', '股票名称', '开盘价', '收盘价', '最高价', '最低价', '成交量', '成交额', '涨跌幅', '换手率']]
+    df = df[['交易日期', '股票代码', '股票名称']]
 
     # 在股票代码前加上交易所简称
     df['股票代码'] = df['股票代码'].astype(str)
@@ -92,7 +94,7 @@ for i in range(len(code_list)):
     df.reset_index(drop=True, inplace=True)
 
     # 存储文件
-    path = create_path()
+    path = create_path(ak_code)
     df.to_csv(path, index=False, mode='w', encoding='gbk')
     time.sleep(2)
 
