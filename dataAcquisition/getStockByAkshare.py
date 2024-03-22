@@ -32,9 +32,13 @@ print(f'akshare version: {ak.__version__}')
 # stock_sse_deal_daily_df = ak.stock_sse_deal_daily(date="20201111")
 # print(stock_sse_deal_daily_df)
 
+# 沪深京 A 股数据
+all_stock_info = ak.stock_info_a_code_name()
+print(all_stock_info)
 
 ############################################### 个股信息查询 //important
 # 描述: 东方财富-个股-股票信息
+# 返回代码和名称
 stock_individual_info_em_df = ak.stock_individual_info_em(symbol="000001")
 print(stock_individual_info_em_df)
 
