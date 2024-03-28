@@ -47,7 +47,6 @@ print(stock_individual_info_em_df)
 # stock_bid_ask_em_df = ak.stock_bid_ask_em(symbol="000001")
 # print(stock_bid_ask_em_df)
 
-
 ############################################### 实时行情数据 //important
 # 描述: 东方财富网-沪深京 A 股-实时行情数据
 stock_zh_a_spot_em_df = ak.stock_zh_a_spot_em()
@@ -60,7 +59,6 @@ print(stock_zh_a_spot_em_df)
 # # 描述: 东方财富网-深 A 股-实时行情数据
 # stock_sz_a_spot_em_df = ak.stock_sz_a_spot_em()
 # print(stock_sz_a_spot_em_df)
-#
 #
 # # 描述: 东方财富网-京 A 股-实时行情数据
 # stock_bj_a_spot_em_df = ak.stock_bj_a_spot_em()
@@ -85,7 +83,6 @@ print(stock_new_a_spot_em_df)
 # # 描述: 雪球-行情中心-个股
 # stock_individual_spot_xq_df = ak.stock_individual_spot_xq(symbol="SPY")
 # print(stock_individual_spot_xq_df.dtypes)
-
 
 ############################################### 历史行情数据
 # 东方财富数据：接口示例-历史行情数据-不复权
